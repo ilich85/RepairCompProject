@@ -1,0 +1,53 @@
+.update-form {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    top: 20%;
+    width: 500px;
+    height: 300px;
+    margin-left: -250px;
+    overflow: auto;
+    background-color: #2b542c;
+    border-radius: 2px;
+    opacity: 0.9;
+}
+
+.update-form textarea {
+    position: relative;
+    left: 5%;
+    top: 3%;
+    width: 90%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 100px;
+    resize: none;
+    background-color: #e4b40c;
+    color: #1c0c0d;
+}
+
+.update-form input[type=text],
+.update-form input[type=number],
+.update-form input[type=password] {
+    position: relative;
+    width: 200px;
+    left: 50%;
+    margin-left: -100px;
+    top: 3%;
+}
+
+.update-form input[type=button] {
+    position: relative;
+    margin-top: 15px;
+    background-color: #e4a234;
+    color: #24078e;
+    width: 130px;
+    left: 25%;
+}
+
+.update-form p, select {
+    position: relative;
+    width: 300px;
+    left: 50%;
+    margin-left: -150px;
+}

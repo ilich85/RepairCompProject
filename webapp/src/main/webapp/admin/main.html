@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="../images/skull.png">
+    <link rel="stylesheet" href="../css/admin_main.css">
+    <link rel="stylesheet" href="../css/update.css">
+    <title>Страница модератора</title>
+</head>
+<body>
+<script src="../lib/jquery-1.11.1.js"></script>
+<script src="../js/admin/lists/ordersList.js"></script>
+<script src="../js/admin/lists/commentsList.js"></script>
+<script src="../js/admin/lists/servicesList.js"></script>
+<script src="../js/admin/lists/messagesList.js"></script>
+<div id="hidden_update_serv" class="update-form">
+    <label id="id_service"/>
+    <textarea type="text" id="new_descr" placeholder="Услуга"></textarea>
+    <input type="number" id="new_price" placeholder="Цена"/><br/>
+    <input type="button" onclick="servicesUpdate()" value="Обновить услугу"/>
+    <input type="button" onclick='location.reload(true)' value="Отмена"/>
+</div>
+<div id="hidden_update_message" class="update-form">
+    <div>
+        <label id="id_message"></label>
+        <textarea id="new_message" type="text" placeholder="Новость"></textarea><br/>
+        <input type="button" onclick="messagesUpdate()" value="Обновить новость"/>
+        <input type="button" onclick='location.reload(true)' value="Отмена"/>
+    </div>
+</div>
+<div class="logout">
+    <p>
+        <input type="button" onclick="adminLogout()"
+               name="exit" class="btn-exit" value="Выход"/>
+    </p>
+</div>
+
+
+<div class="admin1">
+    <br id="tab1"/> <br id="tab2"/>
+    <br id="tab3"/> <br id="tab4"/>
+    <a href="#tab1">Заявки</a>
+    <a href="#tab2">Услуги</a>
+    <a href="#tab3">Отзывы</a>
+    <a href="#tab4">Новости</a>
+    <div class="orders">
+        <div id="orders_for_admin">
+            <script>ordersListForAdmin()</script>
+        </div>
+    </div>
+    <div class="services">
+        <div>
+            <div id="services_for_admin">
+                <script>servicesListAll()</script>
+            </div>
+        </div>
+        <div class="add_smth">
+            <p align="center">Добавить новую услугу</p>
+            <p align="center">
+                    <textarea type="text" id="description" placeholder="Описание"
+                              required></textarea>
+            </p>
+            <p align="center">
+                <input type="number" id="price" placeholder="Цена" required/>
+            </p>
+            <p align="center">
+                <input type="button" class="btn-submit" onclick="servicesAdd()"
+                       value="Добавить услугу"/>
+            </p>
+        </div>
+    </div>
+    <div class="comments">
+        <div>
+            <div id="comments_for_admin">
+                <script>commentsListForAdmin()</script>
+            </div>
+        </div>
+    </div>
+    <div class="messages">
+        <div >
+            <div id="messages_for_admin">
+                <script>messagesListForAdmin()</script>
+            </div>
+        </div>
+        <div class="add_smth" >
+            <p align="center">Добавить объявление</p>
+            <p align="center">
+                    <textarea type="text" id="message_text" placeholder="Сообщение"
+                              required></textarea>
+            </p>
+            <br/>
+            <p align="center">
+                <input type="button" class="btn-submit" onclick="messagesAdd()" value="Добавить"/>
+            </p>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../js/admin/adminLogout.js"></script>
+<script src="../js/services/servicesAUD.js"></script>
+<script src="../js/messages/messagesAUD.js"></script>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Главная страница</title>
+    <link rel="stylesheet" href="../css/user_main.css">
+    <link rel="icon" href="../images/logo.jpg">
+
+</head>
+<body>
+<script src="../lib/jquery-1.11.1.js"></script>
+<script src="../js/comments/commentsListAll.js"></script>
+<script src="../js/services/servicesList.js"></script>
+<script src="../js/messages/messagesList.js"></script>
+<div class="user_home">
+    <p><a href="home.html">Личный кабинет</a>
+        <br/>
+        <br/>
+        <input type="button" class="btn-exit" onclick="userLogout()"
+               name="exit" value="Выход">
+    </p>
+</div>
+<div class="main-header">
+    <p><strong>Добро пожаловать на сайт по ремонту компьютеров</strong></p>
+</div>
+<div>
+    <div class="menu1">
+        <br id="tab1"/>
+        <br id="tab2"/>
+        <br id="tab3"/>
+        <br id="tab4"/>
+        <br id="tab5"/>
+        <a href="#tab1">Главная</a>
+        <a href="#tab2">Компьютерная помощь</a>
+        <a href="#tab3">Услуги</a>
+        <a href="#tab4">Отзывы</a>
+        <a href="#tab5">Контакты</a>
+        <div>
+            <div><p><strong>Наша компания занимается обслуживанием клиентов с 2012 года.
+                У нас низкие цены и короткие сроки выполнения</strong></p>
+                <img src="/images/main.jpg" class="image-main"/></div>
+            <div id="all_messages">
+                <script>messagesList()</script>
+            </div>
+        </div>
+        <div>
+            <p align="center">Опишите свою проблему</p>
+            <p align="center">
+                <textarea type="text" id="order_text" placeholder="Заявка" required></textarea>
+            </p>
+            <p align="center">
+                <input type="button" class="btn-submit" onclick="ordersAdd()"
+                       name="add_order" value="Оставить заявку"/>
+            </p>
+        </div>
+        <div>
+            <div id="all_services">
+                <script>servicesList()</script>
+            </div>
+        </div>
+        <div>
+            <div>
+                <div id="all_comments">
+                    <script>commentsListAll()</script>
+                </div>
+            </div>
+            <div class="add_smth">
+                <p align="center">
+                    <textarea type="text" id="comment_text" placeholder="Отзыв" required></textarea>
+                </p>
+                <p align="center">
+                    <input type="button" class="btn-submit" onclick="commentsAdd()"
+                           name="add_comment_button" value="Оставить отзыв"/>
+                </p>
+            </div>
+        </div>
+        <div>
+            <div class="numbers">
+                <p><strong>(099)997-77-99 Андрей </strong><em>(066)997-77-99 Иван</em>
+                    <strong><em>(050)997-77-99 Ирина</em></strong></p>
+            </div>
+            <div class="google-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d320.
+                40728047789844!2d36.33445213500698!3d50.025256669030455!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.
+                1!3m3!1m2!1s0x4127a76370e4b0cd%3A0xdd84f82790774fb7!2z0KDQsNC00LjQvtGA0YvQvdC-
+                0LogwqvQkNGA0LDQutGBwrs!5e0!3m2!1sru!2sua!4v1511193289188" width="600" height="450"
+                        frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+<script src="../js/comments/commentsAdd.js"></script>
+<script src="../js/user/userLogout.js"></script>
+<script src="../js/orders/ordersAdd.js"></script>
+</html>

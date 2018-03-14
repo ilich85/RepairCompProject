@@ -1,0 +1,207 @@
+html {
+    background-color: rgba(213, 199, 114, 0.69);
+}
+
+textarea {
+    width: 500px;
+    height: 100px;
+    resize: none;
+}
+
+.comments {
+    width: 80%;
+    margin: 10px;
+    left: 10%;
+    margin-right: 10%;
+    position: relative;
+    background-color: #e4a234;
+    border: 1px solid #0d083b;
+}
+
+.comments-text {
+    overflow: hidden;
+    position: relative;
+    font-size: 20px;
+    width: 96%;
+    top: 2%;
+    left: 2%;
+    margin-bottom: 30px;
+}
+
+.image-main {
+    position: relative;
+    width: 80%;
+    left: 10%;
+}
+
+.comments-date {
+    position: absolute;
+    right: 3%;
+    bottom: 0%;
+}
+
+.comments-user {
+    position: absolute;
+    left: 3%;
+    bottom: 0%;
+}
+
+.services {
+    position: relative;
+    border: 1px solid black;
+    width: 70%;
+    left: 15%;
+    background-color: #ffe990;
+}
+
+.service-descr {
+    position: relative;
+    left: 2%;
+    bottom: 1%;
+}
+
+.service-price {
+    position: absolute;
+    right: 2%;
+    bottom: 1%;
+}
+
+.messages {
+    border: 1px dashed white;
+    color: #0d053b;
+    font-size: 20px;
+}
+
+.btn-exit {
+    background-color: #c7ca00;
+    color: #164182;
+    width: 90px;
+    height: 20px;
+    border-radius: 7px;
+}
+
+.btn-submit {
+    background-color: #2b542c;
+    color: white;
+    width: 150px;
+    height: 30px;
+    border-radius: 3px;
+}
+
+#tab2, #tab3, #tab4, #tab5 {
+    position: fixed;
+}
+
+.main-header {
+    position: absolute;
+    left: 30%;
+    text-align: center;
+    top: 2%;
+    color: rgba(7, 14, 43, 0.89);
+    font-size: 24px;
+    line-height: 1.6;
+    font-weight: 200;
+}
+
+.user_home p {
+    position: absolute;
+    right: 0%;
+    text-align: center;
+    top: 1%;
+}
+
+.menu1 p {
+    position: relative;
+    width: 80%;
+    left: 10%;
+    text-align: center;
+    top: 5%;
+}
+
+.numbers {
+    top: 2%;
+    text-align: center;
+}
+
+.google-map {
+    width: 85%;
+    margin-top: 20px;
+    margin-left: 140px;
+    right: 5%;
+}
+
+input[type=number], textarea {
+    background-color: #ff941c;
+    font-size: 18px;
+}
+
+.add_smth {
+    border-top: 2px dashed #11184d;
+    bottom: 0%;
+}
+
+.user_home a {
+    padding: 5px;
+    text-decoration: none;
+    text-align: center;
+    color: #0d053b;
+    border: 1px dashed #0d083b;
+    border-radius: 2px;
+}
+
+.menu1 {
+    position: absolute;
+    width: 64%;
+    top: 10%;
+    left: 18%;
+    font-size: 20px;
+}
+
+.menu1 a {
+    padding-top: 2px;
+    padding-left: 3px;
+    padding-right: 3px;
+    font-size: 24px;
+    color: #ffe990;
+    border-bottom: 1px solid rgba(161, 94, 44, 0.79);
+    text-decoration: none;
+}
+
+.menu1 > a,
+.menu1 #tab2:target ~ a:nth-of-type(1),
+.menu1 #tab3:target ~ a:nth-of-type(1),
+.menu1 #tab4:target ~ a:nth-of-type(1),
+.menu1 #tab5:target ~ a:nth-of-type(1),
+.menu1 > div {
+    background-color: rgba(161, 94, 44, 0.79);
+    border: 1px solid rgba(22, 64, 160, 0.95);
+    border-radius: 3px;
+}
+
+#tab2,
+#tab3,
+#tab4,
+#tab5,
+.menu1 > div,
+.menu1 #tab2:target ~ div:nth-of-type(1),
+.menu1 #tab3:target ~ div:nth-of-type(1),
+.menu1 #tab4:target ~ div:nth-of-type(1),
+.menu1 #tab5:target ~ div:nth-of-type(1) {
+    display: none;
+}
+
+.menu1 > div:nth-of-type(1),
+.menu1 #tab2:target ~ div:nth-of-type(2),
+.menu1 #tab3:target ~ div:nth-of-type(3),
+.menu1 #tab4:target ~ div:nth-of-type(4),
+.menu1 #tab5:target ~ div:nth-of-type(5) {
+    display: block;
+}
+
+.menu1 > a:nth-of-type(1),
+.menu1 #tab2:target ~ a:nth-of-type(2),
+.menu1 #tab3:target ~ a:nth-of-type(3),
+.menu1 #tab4:target ~ a:nth-of-type(4),
+.menu1 #tab5:target ~ a:nth-of-type(5) {
+    border-bottom: 2px solid rgba(161, 94, 44, 0.79);
+}

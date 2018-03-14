@@ -1,0 +1,117 @@
+html {
+    background-color: #e4a234;
+}
+
+.main-header {
+    position: absolute;
+    left: 35%;
+    text-align: center;
+    top: 1%;
+}
+
+.main-header h2 {
+    color: #0d083b;
+    text-transform: uppercase;
+    font-size: x-large;
+}
+
+.main-header p {
+    color: #24078e;
+    font-size: 24px;
+    margin-top: 15px;
+}
+
+.img {
+    position: absolute;
+    width: 400px;
+    opacity: 0.9;
+}
+
+.img1 {
+    top: 2%;
+    left: 2%;
+}
+
+.img2 {
+    top: 70%;
+    left: 2%;
+}
+
+.img3 {
+    top: 2%;
+    right: 2%;
+}
+
+.img4 {
+    top: 60%;
+    right: 2%;
+}
+
+.img5 {
+    top: 80%;
+    left: 35%;
+}
+
+.form1 {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    margin-left: -150px;
+    background: rgba(167, 133, 45, 0.7);
+    border-radius: 20px;
+}
+
+.text1 {
+    font-size: 18px;
+    color: #164182;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.text1 a {
+    color: #6a0529;
+    text-decoration: none;
+}
+
+.form1 h1 {
+    font-size: 22px;
+    padding-bottom: 20px;
+}
+
+.form1 input[type=text],
+.form1 input[type=password],
+.form1 input[type=number] {
+    width: 200px;
+    height: 25px;
+    margin-top: 5px;
+    margin-left: 50px;
+    border: 1px solid rgba(136, 76, 20, 0.68);
+    background: rgba(142, 99, 40, 0.8);
+    border-radius: 3px;
+    color: #fff;
+    font-size: 14px;
+}
+
+.form1 input[type=button] {
+    width: 180px;
+    height: 30px;
+    margin-top: 10px;
+    margin-left: 60px;
+    background: linear-gradient(rgba(32, 99, 90, 0.5), rgba(69, 49, 255, 0.7));
+    border-radius: 5px;
+    border: 1px solid rgba(57, 12, 7, 0.62);
+    color: rgb(255, 235, 248);
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+.form1 input::-webkit-input-placeholder {
+    color: rgba(248, 235, 251, 0.48);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.form1 input[type=button]:hover {
+    background: #594642;
+}

@@ -1,0 +1,54 @@
+html {
+    background-color: rgba(213, 199, 114, 0.69);
+}
+
+.home {
+    position: relative;
+    top: 15%;
+    left: 50%;
+    width: 500px;
+    margin-left: -250px;
+    text-align: center;
+}
+
+.admin,
+.users {
+    border: 1px solid black;
+}
+
+input[type=text],
+input[type=password] {
+    width: 200px;
+    height: 25px;
+    margin-top: 5px;
+    border: 1px solid rgba(136, 76, 20, 0.68);
+    border-radius: 3px;
+    color: #000;
+    font-size: 14px;
+}
+
+.add-admin {
+    background-color: #e4a234;
+    color: #6a0529;
+    border: 1px solid chocolate;
+}
+
+a {
+    font-size: x-large;
+    color: #0d083b;
+    text-decoration: none;
+}
+
+.delete-button {
+    position: relative;
+    background-color: red;
+}
+
+.update-button {
+    position: relative;
+    background-color: yellow;
+}
+
+.pass-button {
+    background-color: chartreuse;
+}

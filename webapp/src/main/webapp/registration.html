@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Компьютерная неотложка</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="images/logo.jpg">
+</head>
+<body>
+<img src="images/1.png" class="img img1"/>
+<img src="images/2.png" class="img img2"/>
+<img src="images/3.png" class="img img3"/>
+<img src="images/4.png" class="img img4"/>
+<img src="images/5.png" class="img img5"/>
+<div class="main-header">
+    <h2>Компьютерная неотложка</h2>
+    <p><strong><em>Регистрация</em></strong></p>
+</div>
+<script src="lib/jquery-1.11.1.js"></script>
+<script src="js/user/userValidation.js"></script>
+<div class="form1">
+    <br/>
+    <p>
+        <input type="text" id="log_reg" placeholder="Логин" required/>
+    </p>
+    <p>
+        <input type="number" id="phone" placeholder="Телефон" required/>
+    </p>
+    <p>
+        <input id="mail_reg" type="text" placeholder="Email" required/>
+    </p>
+    <p>
+        <input type="password" id="pass_reg" placeholder="Пароль" required/>
+    </p>
+    <p>
+        <input type="button" onclick="validation()" value="Зарегистрироваться"/>
+    </p>
+    <p class="text1">Есть аккаунт? <a href="authorization.html">Войти</a></p>
+    <script>inputValidation()</script>
+</div>
+
+</body>
+<script src="js/user/userReg.js"></script>
+</html>

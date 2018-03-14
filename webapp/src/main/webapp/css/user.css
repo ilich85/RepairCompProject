@@ -1,0 +1,129 @@
+html {
+    background-color: rgba(213, 199, 114, 0.69);
+}
+
+.main-header {
+    position: relative;
+    width: 400px;
+    left: 50%;
+    margin-left: -200px;
+    font-size: xx-large;
+    color: #9f2eff;
+}
+
+.home {
+    position: relative;
+    top: 15%;
+    left: 50%;
+    width: 500px;
+    margin-left: -250px;
+    text-align: center;
+}
+
+a {
+    font-size: x-large;
+    color: #0d083b;
+    text-decoration: none;
+}
+
+.back {
+    position: relative;
+    width: 100px;
+    left: 50%;
+    bottom: 0%;
+    margin-left: -50px;
+}
+
+.mess {
+    position: relative;
+    top: 5%;
+    left: 50%;
+    width: 500px;
+    margin-left: -250px;
+}
+
+.user-info {
+    position: relative;
+    width: 500px;
+    height: 40%;
+    font-size: x-large;
+    left: 50%;
+    margin-left: -250px;
+    color: #0d053b;
+    background-color: #e4a234;
+}
+
+.menu1 {
+    position: relative;
+    width: 64%;
+    top: 10%;
+    left: 18%;
+    font-size: 20px;
+    background-color: rgba(161, 94, 44, 0.79);
+    border: 1px solid rgba(22, 64, 160, 0.95);
+    border-radius: 3px;
+}
+
+.user-comments {
+    width: 80%;
+    left: 10%;
+    margin-right: 10%;
+    position: relative;
+    border: 1px solid #0d083b;
+}
+
+.comments-text {
+    overflow: hidden;
+    position: relative;
+    font-size: 20px;
+    color: #ffe990;
+    width: 96%;
+    top: 2%;
+    left: 2%;
+    margin-bottom: 45px;
+}
+
+.comments-date {
+    position: relative;
+    left: 1%;
+    bottom: 0%;
+}
+
+.user-orders {
+    width: 80%;
+    left: 10%;
+    margin-right: 10%;
+    position: relative;
+    border: 1px solid #0d083b;
+}
+
+.orders-text {
+    overflow: hidden;
+    position: relative;
+    font-size: 20px;
+    color: #ffe990;
+    width: 96%;
+    top: 2%;
+    left: 2%;
+    margin-bottom: 45px;
+}
+
+.orders-date {
+    position: relative;
+    left: 1%;
+    bottom: 0%;
+}
+
+.delete-button {
+    position: relative;
+    background-color: red;
+}
+
+.update-button {
+    position: relative;
+    background-color: yellow;
+}
+
+.pass-button {
+    background-color: chartreuse;
+}

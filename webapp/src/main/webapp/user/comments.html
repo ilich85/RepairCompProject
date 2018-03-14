@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Мои отзывы</title>
+    <link rel="stylesheet" href="../css/update.css">
+    <link rel="stylesheet" href="../css/user.css">
+    <link rel="icon" href="../images/logo.jpg">
+</head>
+
+<body>
+<div id="hidden_update_comments" class="update-form">
+    <label id="id_comment"/>
+    <textarea type="text" id="new_text" placeholder="Отзыв"></textarea>
+    <input type="button" onclick="commentsUpdate()" value="Обновить отзыв"/>
+    <input type="button" onclick='location.reload(true)' value="Отмена"/>
+</div>
+<script src="../lib/jquery-1.11.1.js"></script>
+<script src="../js/comments/commentsForUser.js"></script>
+<div class="menu1">
+    <div>
+        <div id="user_comments">
+            <script>commentsForUser()</script>
+        </div>
+    </div>
+</div>
+<div class="back">
+    <a href="home.html">Назад</a>
+</div>
+</body>
+<script src="../js/comments/commentsDelete.js"></script>
+<script src="../js/comments/commentsUpdate.js"></script>
+</html>

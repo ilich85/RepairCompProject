@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="../images/skull.png">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>**************</title>
+</head>
+<body>
+<div class="main-header">
+    <h2>Вход только для модераторов</h2>
+</div>
+<div class="form1">
+    <p>
+        <input id="admin_name" type="text" placeholder="Логин" required/>
+    </p>
+    <p>
+        <input id="password" type="password" placeholder="Пароль" required/>
+    </p>
+    <p>
+        <input type="button" class="btn-submit" name="login_button"
+               onclick="adminAuth()" value="Вход"/>
+    </p>
+</div>
+<script src="../lib/jquery-1.11.1.js"></script>
+<script src="../js/admin/adminAuth.js"></script>
+</body>
+</html>

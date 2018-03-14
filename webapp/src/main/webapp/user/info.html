@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Компьютерная неотложка</title>
+    <link rel="stylesheet" href="../css/user.css">
+    <link rel="stylesheet" href="../css/update.css">
+    <link rel="icon" href="../images/logo.jpg">
+</head>
+<body>
+<script src="../lib/jquery-1.11.1.js"></script>
+<script src="../js/user/userInfo.js"></script>
+<div >
+    <div id="info_user" class="info-user">
+        <script>userInfo()</script>
+    </div>
+</div>
+<div id="hidden_update_info" class="update-form">
+    <label id="id_user"/><br>
+    <input type="number" id="phone" placeholder="Телефон"/><br/>
+    <input type="text" id="first_name" placeholder="Имя"/><br/>
+    <input type="text" id="last_name" placeholder="Фамилия"/><br/>
+    <input type="button" onclick="userUpdateInfo()" value="Обновить"/>
+    <input type="button" onclick='location.reload(true)' value="Отмена"/>
+</div>
+
+<div id="hidden_delete_user" class="update-form">
+    <p>Почему вы хотите удалить свой аккаунт?</p>
+    <select>
+        <option selected value="1">Сайт не помог</option>
+        <option value="2">Случайно зарегистрировался(лась)</option>
+        <option value="3">Надоела ваша реклама</option>
+    </select>
+    <p>
+        <input id="pass_del" type="password" placeholder="Введите пароль" required/>
+    </p>
+    <br/>
+    <input type="button" onclick="userDelete()" name="button" value="Удалить аккаунт"/>
+    <input type="button" onclick='location.reload(true)' value="Отмена"/>
+</div>
+<div id="hidden_update_pass" class="update-form">
+    <input type="password" id="old_pass" placeholder="Старый пароль"/><br/>
+    <input type="password" id="new_pass" placeholder="Новый пароль"/><br/>
+    <input type="password" id="repeat_pass" placeholder="Повторите пароль"/><br/>
+    <input type="button" onclick="userUpdatePass()" value="Обновить"/>
+    <input type="button" class="btn-submit" onclick='location.reload(true)' value="Отмена"/>
+</div>
+<div class="back">
+    <a href="home.html">Назад</a>
+</div>
+</body>
+<script src="../js/user/userUpdate.js"></script>
+<script src="../js/user/userDelete.js"></script>
+</html>

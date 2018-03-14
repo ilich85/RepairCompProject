@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="../images/skull.png">
+    <link rel="stylesheet" href="../css/update.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <title><*_*></title>
+</head>
+<body>
+<div id="hidden_update" class="update-form">
+    <label id="id_admin"/><br>
+    <input type="text" id="admin_name" placeholder="Логин"/><br>
+    <input type="text" id="email" placeholder="Email"/><br>
+    <input type="text" id="password" placeholder="Пароль"/><br>
+    <input type="button" onclick="adminUpdate()" value="Обновить"/>
+    <input type="button" onclick='location.href="admins.html"' value="Отмена"/>
+</div>
+<script src="../lib/jquery-1.11.1.js"></script>
+<script src="../js/admin/lists/adminsList.js"></script>
+<div class="home">
+    <div class="add-admin">
+        <p class="text1">Создание админа</p>
+        <br/>
+        <p>
+            <input id="new_admin_name" type="text" placeholder="Логин" required/>
+        </p>
+        <p>
+            <input id="new_email" type="text" placeholder="Email" required/>
+        </p>
+        <p>
+            <input id="new_password" type="password" placeholder="Пароль" required/>
+        </p>
+        <p>
+            <input type="button" class="update-button" onclick="adminReg()" value="Создать админа"/>
+        </p>
+    </div>
+    <div>
+        <div id="admins_to_update">
+            <script>adminsList()</script>
+        </div>
+    </div>
+    <div>
+        <p><a href="superadmin.html">Назад</a></p>
+    </div>
+</div>
+</body>
+<script src="../js/admin/adminsAUD.js"></script>
+</html>

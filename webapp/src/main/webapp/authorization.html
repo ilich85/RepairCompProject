@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Компьютерная неотложка</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="images/logo.jpg">
+</head>
+<body>
+<img src="images/1.png" class="img img1"/>
+<img src="images/2.png" class="img img2"/>
+<img src="images/3.png" class="img img3"/>
+<img src="images/4.png" class="img img4"/>
+<img src="images/5.png" class="img img5"/>
+<div class="main-header">
+    <h2>Компьютерная неотложка</h2>
+    <p><strong><em>Вход на сайт</em></strong></p>
+</div>
+<div class="form1" method="POST" action="">
+    <br/>
+    <p>
+        <input id="login" type="text" name="login" placeholder="Логин" required/>
+    </p>
+    <p>
+        <input id="password" type="password" name='password' placeholder="Пароль" required/>
+    </p>
+    <br/>
+    <br/>
+    <p>
+        <input type="button" class="btn-submit" name="login_button"
+               onclick="userAuth()" value="Войти"/>
+    </p>
+    <p class="text1">Нет аккаунта? <a href="registration.html">Регистрация</a></p>
+</div>
+
+<script src="lib/jquery-1.11.1.js"></script>
+<script src="js/user/userAuth.js"></script>
+
+</body>
+</html>

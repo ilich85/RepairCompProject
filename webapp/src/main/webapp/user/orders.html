@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Мои заявки</title>
+    <link rel="stylesheet" href="../css/update.css">
+    <link rel="stylesheet" href="../css/user.css">
+    <link rel="icon" href="../images/logo.jpg">
+</head>
+<body>
+<script src="../lib/jquery-1.11.1.js"></script>
+<script src="../js/orders/ordersForUser.js"></script>
+<div id="hidden_update_orders" class="update-form">
+    <label id="id_orders"/>
+    <textarea type="text" id="new_order" placeholder="Заявка"></textarea>
+    <input type="button" onclick="ordersUpdate()" value="Обновить заявку"/>
+    <input type="button" onclick='location.reload(true)' value="Отмена"/>
+</div>
+
+<div class="menu1">
+    <div>
+        <div id="user_orders" class="mess">
+            <script>ordersForUser()</script>
+        </div>
+    </div>
+</div>
+
+<div class="back">
+    <a href="home.html">Назад</a>
+</div>
+</body>
+<script src="../js/orders/ordersUpdate.js"></script>
+</html>
