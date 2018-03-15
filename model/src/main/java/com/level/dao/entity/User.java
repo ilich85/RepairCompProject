@@ -67,7 +67,6 @@ public class User implements Comparable {
         this.idUser = idUser;
     }
 
-
     @Column(name = "username", length = 25, unique = true, nullable = false)
     public String getUsername() {
         return username;
@@ -123,16 +122,6 @@ public class User implements Comparable {
     }
 
     @Override
-    public String toString() {
-        return "User{" +
-                "idUser=" + idUser +
-                ", username='" + username + '\'' +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
-                '}';
-    }
-
-    @Override
     public boolean equals(Object object) {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
@@ -140,23 +129,19 @@ public class User implements Comparable {
         User user = (User) object;
 
         if (idUser != user.idUser) return false;
-        if (username != null ? !username.equals(user.username) : user.username != null) return false;
-        if (email != null ? !email.equals(user.email) : user.email != null) return false;
-        if (password != null ? !password.equals(user.password) : user.password != null) return false;
-        if (phone != null ? !phone.equals(user.phone) : user.phone != null) return false;
-        if (firstName != null ? !firstName.equals(user.firstName) : user.firstName != null) return false;
-        return lastName != null ? lastName.equals(user.lastName) : user.lastName == null;
+        if (!username.equals(user.username)) return false;
+        if (!email.equals(user.email)) return false;
+        if (!password.equals(user.password)) return false;
+        return phone.equals(user.phone);
     }
 
     @Override
     public int hashCode() {
         int result = (int) (idUser ^ (idUser >>> 32));
-        result = 31 * result + (username != null ? username.hashCode() : 0);
-        result = 31 * result + (email != null ? email.hashCode() : 0);
-        result = 31 * result + (password != null ? password.hashCode() : 0);
-        result = 31 * result + (phone != null ? phone.hashCode() : 0);
-        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
-        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+        result = 31 * result + username.hashCode();
+        result = 31 * result + email.hashCode();
+        result = 31 * result + password.hashCode();
+        result = 31 * result + phone.hashCode();
         return result;
     }
 

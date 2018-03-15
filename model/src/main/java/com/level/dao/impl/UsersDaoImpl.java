@@ -3,11 +3,12 @@ package com.level.dao.impl;
 import com.level.dao.entity.User;
 import com.level.dao.interfaces.AuthDao;
 import com.level.hibernateFactory.HibernateSessionFactory;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
+import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.TreeSet;
 
 
@@ -20,19 +21,21 @@ public class UsersDaoImpl extends EntityDaoImpl implements AuthDao {
             Query query = session.createQuery("FROM User WHERE username =:paramName");
             query.setParameter("paramName", name);
             user = (User) query.uniqueResult();
-        } catch (HibernateException e) {
-            return null;
         }
         return user;
     }
 
     @Override
-    public Set getAllEntities() {
-        Set<User> users = new TreeSet<>();
+    public Map<Long, Object> listAll() {
+        Set<User> userSet = new TreeSet<>();
+        Map<Long, Object> map = new TreeMap<>();
         try (Session session = HibernateSessionFactory.getSessionFactory().openSession()) {
-            users.addAll(session.createQuery("FROM User").list());
+            userSet.addAll(session.createQuery("FROM User").list());
         }
-        return users;
+        for (User user : userSet) {
+            map.put(user.getIdUser(), user);
+        }
+        return map;
     }
 
     @Override

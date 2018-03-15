@@ -26,14 +26,14 @@ public class MessagesUpdateManager {
         JSONObject jsonObject = new JSONObject();
         Factory inst = Factory.getInstance();
         String result;
-        Admin currAdmin = (Admin) inst.getAdminDao()
+        Admin currAdmin = (Admin) inst.getAdminsDao()
                 .getAuthByName(mapParam.get("admin_name")[0]);
-        Messages messages = (Messages) inst.getMessagesDAO()
+        Messages messages = (Messages) inst.getMessagesDao()
                 .getEntityByID(parseLong(mapParam.get("id_message")[0]));
         if (currAdmin != null) {
             messages.setText(mapParam.get("new_message")[0]);
             messages.setDate(new SimpleDateFormat().format(new Date()));
-            inst.getMessagesDAO().update(messages);
+            inst.getMessagesDao().update(messages);
             result = "complete";
         } else {
             result = "wrong";

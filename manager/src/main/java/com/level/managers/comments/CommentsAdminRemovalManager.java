@@ -19,8 +19,8 @@ public class CommentsAdminRemovalManager {
         JSONObject jsonObject = new JSONObject();
         Factory inst = Factory.getInstance();
         String result;
-        if (inst.getAdminDao().getAuthByName(mapParam.get("admin_name")[0]) != null) {
-            inst.getCommentDAO().delete(inst.getCommentDAO()
+        if (inst.getAdminsDao().getAuthByName(mapParam.get("admin_name")[0]) != null) {
+            inst.getCommentsDao().delete(inst.getCommentsDao()
                     .getEntityByID(Long.parseLong(mapParam.get("comment_id")[0])));
             result = "complete";
         } else {

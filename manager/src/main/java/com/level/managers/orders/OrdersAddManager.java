@@ -25,10 +25,10 @@ public class OrdersAddManager {
     public JSONObject add(Map<String, String[]> mapParam) {
         JSONObject jsonObject = new JSONObject();
         String result;
-        User currentUser = (User) Factory.getInstance().getUserDao()
+        User currentUser = (User) Factory.getInstance().getUsersDao()
                 .getAuthByName(mapParam.get("username")[0]);
         if (currentUser != null) {
-            Factory.getInstance().getOrderDao().add(new Orders(mapParam.get("order_text")[0],
+            Factory.getInstance().getOrdersDao().add(new Orders(mapParam.get("order_text")[0],
                     new SimpleDateFormat().format(new Date()), currentUser));
             result = "complete";
         } else {

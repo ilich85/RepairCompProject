@@ -22,42 +22,42 @@ public class Factory {
         return instance;
     }
 
-    public AuthDao getAdminDao() {
+    public AuthDao getAdminsDao() {
         if (adminsDao == null) {
             adminsDao = new AdminsDaoImpl();
         }
         return adminsDao;
     }
 
-    public AuthDao getUserDao() {
+    public AuthDao getUsersDao() {
         if (usersDao == null) {
             usersDao = new UsersDaoImpl();
         }
         return usersDao;
     }
 
-    public EntityDao getOrderDao() {
+    public EntityDao getOrdersDao() {
         if (ordersDao == null) {
             ordersDao = new OrdersDaoImpl();
         }
         return ordersDao;
     }
 
-    public EntityDao getCommentDAO() {
+    public EntityDao getCommentsDao() {
         if (commentsDao == null) {
             commentsDao = new CommentsDaoImpl();
         }
         return commentsDao;
     }
 
-    public EntityDao getServiceDao() {
+    public EntityDao getServicesDao() {
         if (servicesDao == null) {
             servicesDao = new ServicesDaoImpl();
         }
         return servicesDao;
     }
 
-    public EntityDao getMessagesDAO() {
+    public EntityDao getMessagesDao() {
         if (messagesDao == null) {
             messagesDao = new MessagesDaoImpl();
         }

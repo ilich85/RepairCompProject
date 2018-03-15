@@ -20,22 +20,11 @@ public class CommentsListManager {
     }
 
     public JSONObject list() {
-        Factory inst = Factory.getInstance();
         JSONObject jsonObject = new JSONObject();
         JSONObject jsonComments = new JSONObject();
-        Map<Long, Comments> listComments = new TreeMap<>();
-        Set<Comments> commentsSet = inst.getCommentDAO().getAllEntities();
-
-        if (commentsSet != null) {
-            for (Comments comments : commentsSet) {
-                Comments comment = (Comments) inst.getCommentDAO()
-                        .getEntityByID(comments.getIdComment());
-                listComments.put(comment.getIdComment(), comment);
-            }
-        }
-
-        for (Map.Entry<Long, Comments> entry : listComments.entrySet()) {
-            jsonComments.put(entry.getKey(), serializableComment(entry.getValue()));
+        for (Map.Entry<Long, Object> entry : new TreeMap<>(Factory.getInstance()
+                .getCommentsDao().listAll()).entrySet()) {
+            jsonComments.put(entry.getKey(), serializableComment((Comments) entry.getValue()));
             jsonObject.put("comments", jsonComments);
         }
         return jsonObject;

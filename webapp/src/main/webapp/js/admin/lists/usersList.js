@@ -17,19 +17,19 @@ function usersList() {
                     "<div>" + "Имя: " + usersList[user].first_name + "</div>" +
                     "<div>" + "Фамилия: " + usersList[user].last_name + "</div>" +
                     "<input type='button' class='delete-button' value='Удалить аккаунт'" +
-                    "onclick='deletingAnUserByAnAdmin(" + usersList[user].id + ")'/>";
+                    "onclick='userRemovalByAdmin(" + usersList[user].id + ")'/>";
                 allUsers.parentNode.appendChild(div);
             }
         }
     });
 }
-function deletingAnUserByAnAdmin(id) {
+function userRemovalByAdmin(id) {
     if (confirm("Вы точно хотите удалить данного пользователя?") === true) {
         $.ajax({
             type: "POST",
             url: "/RepairComp",
             dataType: "json",
-            data: {requestType: "deletingAnUserByAnAdmin", id_user: id},
+            data: {requestType: "userRemovalByAdmin", id_user: id},
             success: function (data) {
                 switch (data.result) {
                     case "complete":

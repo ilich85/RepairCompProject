@@ -5,9 +5,8 @@ import com.level.dao.entity.User;
 import com.level.hibernateFactory.Factory;
 import org.json.simple.JSONObject;
 
-import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
+import java.util.TreeMap;
 
 public class UsersListManager {
     private static UsersListManager instance = null;
@@ -21,22 +20,17 @@ public class UsersListManager {
 
     public JSONObject list(String adminName) {
         Factory inst = Factory.getInstance();
-        Map<Long, User> users = new HashMap<>();
         JSONObject jsonUsers = new JSONObject();
         JSONObject jsonObject = new JSONObject();
-        Admin currAdmin = (Admin) inst.getAdminDao().getAuthByName(adminName);
-        if (currAdmin != null) {
-            Set<User> userSet = inst.getUserDao().getAllEntities();
-            if (userSet != null) {
-                for (User u : userSet) {
-                    User user = (User) inst.getUserDao().getEntityByID(u.getIdUser());
-                    users.put(user.getIdUser(), user);
-                }
+        Admin currentAdmin = (Admin) inst.getAdminsDao().getAuthByName(adminName);
+        if (currentAdmin.getIdAdmin() == 1) {
+            for (Map.Entry<Long, Object> entry : new TreeMap<>(inst.getUsersDao()
+                    .listAll()).entrySet()) {
+                jsonUsers.put(entry.getKey(), serializableUser((User) entry.getValue()));
+                jsonObject.put("users", jsonUsers);
             }
-        }
-        for (Map.Entry<Long, User> entry : users.entrySet()) {
-            jsonUsers.put(entry.getKey(), serializableUser(entry.getValue()));
-            jsonObject.put("users", jsonUsers);
+        } else {
+            return null;
         }
         return jsonObject;
     }

@@ -1,25 +1,29 @@
 package com.level.dao.impl;
 
-
 import com.level.dao.entity.Messages;
 import com.level.hibernateFactory.HibernateSessionFactory;
 import org.hibernate.Session;
 
+import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.TreeSet;
 
 public class MessagesDaoImpl extends EntityDaoImpl {
 
     @Override
-    public Set getAllEntities() {
-        Set<Messages> messages = new TreeSet<>();
+    public Map<Long, Object> listAll() {
+        Set<Messages> messagesSet = new TreeSet<>();
+        Map<Long, Object> map = new TreeMap<>();
         try (Session session = HibernateSessionFactory.getSessionFactory().openSession()) {
-            messages.addAll(session.createQuery("FROM Messages").list());
-        } catch (Exception e) {
-            e.printStackTrace();
+            messagesSet.addAll(session.createQuery("FROM Messages").list());
         }
-        return messages;
+        for (Messages messages : messagesSet) {
+            map.put(messages.getIdMessage(), messages);
+        }
+        return map;
     }
+
     @Override
     public Object getEntityByID(long id) {
         Messages messages;

@@ -22,7 +22,7 @@ public class UserUpdatePassManager {
 
     public JSONObject update(Map<String, String[]> mapParam) {
         JSONObject jsonObject = new JSONObject();
-        AuthDao inst = Factory.getInstance().getUserDao();
+        AuthDao inst = Factory.getInstance().getUsersDao();
         String result;
         User currentUser = (User) inst.getAuthByName(mapParam.get("username")[0]);
         String newPass = mapParam.get("new_pass")[0];

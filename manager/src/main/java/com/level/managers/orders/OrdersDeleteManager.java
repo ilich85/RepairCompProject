@@ -25,13 +25,13 @@ public class OrdersDeleteManager {
     public JSONObject delete(Map<String, String[]> mapParam) {
         String result = null;
         JSONObject jsonObject = new JSONObject();
-        Orders order = (Orders) Factory.getInstance().getOrderDao()
+        Orders order = (Orders) Factory.getInstance().getOrdersDao()
                 .getEntityByID(parseLong(mapParam.get("id_order")[0]));
-        User currentUser = (User) Factory.getInstance().getUserDao()
+        User currentUser = (User) Factory.getInstance().getUsersDao()
                 .getAuthByName(mapParam.get("username")[0]);
         if (order != null && currentUser != null) {
             if (order.getUser().getIdUser() == currentUser.getIdUser()) {
-                Factory.getInstance().getOrderDao().delete(order);
+                Factory.getInstance().getOrdersDao().delete(order);
                 result = "complete";
             } else {
                 result = "wrong";

@@ -6,7 +6,6 @@ import com.level.hibernateFactory.Factory;
 import org.json.simple.JSONObject;
 
 import java.util.Map;
-import java.util.Set;
 import java.util.TreeMap;
 
 
@@ -20,23 +19,15 @@ public class AdminsListManager {
         return instance;
     }
 
-    public JSONObject list(String adminName) {
-        Factory inst = Factory.getInstance();
-        AuthDao adminDao = Factory.getInstance().getAdminDao();
-        Admin currentAdmin = (Admin) adminDao.getAuthByName(adminName);
-        Map<Long, Admin> listAdmins = new TreeMap<>();
+    public JSONObject list(String currAdmin) {
+        AuthDao adminDao = Factory.getInstance().getAdminsDao();
+        Admin currentAdmin = (Admin) adminDao.getAuthByName(currAdmin);
         JSONObject jsonObject = new JSONObject();
         JSONObject jsonAdmins = new JSONObject();
         if (currentAdmin.getIdAdmin() == 1) {
-            Set<Admin> adminsSet = inst.getAdminDao().getAllEntities();
-            if (adminsSet != null) {
-                for (Admin admins : adminsSet) {
-                    Admin admin = (Admin) adminDao.getEntityByID(admins.getIdAdmin());
-                    listAdmins.put(admin.getIdAdmin(), admin);
-                }
-            }
-            for (Map.Entry<Long, Admin> entry : listAdmins.entrySet()) {
-                jsonAdmins.put(entry.getKey(), serializableAdmin(entry.getValue()));
+            for (Map.Entry<Long, Object> entry : new TreeMap<>(Factory.getInstance()
+                    .getAdminsDao().listAll()).entrySet()) {
+                jsonAdmins.put(entry.getKey(), serializableAdmin((Admin) entry.getValue()));
                 jsonObject.put("admins", jsonAdmins);
             }
         }

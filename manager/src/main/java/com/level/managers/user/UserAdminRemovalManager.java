@@ -23,9 +23,9 @@ public class UserAdminRemovalManager {
         Factory inst = Factory.getInstance();
         JSONObject jsonObject = new JSONObject();
         String result;
-        Admin currAdmin = (Admin) inst.getAdminDao().getAuthByName(mapParam.get("admin_name")[0]);
+        Admin currAdmin = (Admin) inst.getAdminsDao().getAuthByName(mapParam.get("admin_name")[0]);
         if (currAdmin.getIdAdmin() == 1) {
-            inst.getUserDao().delete(inst.getUserDao()
+            inst.getUsersDao().delete(inst.getUsersDao()
                     .getEntityByID(parseLong(mapParam.get("id_user")[0])));
             result = "complete";
         } else {

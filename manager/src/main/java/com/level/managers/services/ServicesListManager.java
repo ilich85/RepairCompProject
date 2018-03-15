@@ -5,10 +5,7 @@ import com.level.dao.interfaces.EntityDao;
 import com.level.hibernateFactory.Factory;
 import org.json.simple.JSONObject;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 
 public class ServicesListManager {
@@ -22,21 +19,11 @@ public class ServicesListManager {
     }
 
     public JSONObject list() {
-        EntityDao serviceDao = Factory.getInstance().getServiceDao();
-        Map<Long, Services> listServices = new HashMap<>();
+        EntityDao serviceDao = Factory.getInstance().getServicesDao();
         JSONObject jsonObject = new JSONObject();
         JSONObject jsonServices = new JSONObject();
-        Set<Services> servicesList = serviceDao.getAllEntities();
-        if (servicesList != null) {
-            for (Services services : servicesList) {
-                Services service = (Services) serviceDao.getEntityByID(services.getIdService());
-                listServices.put(service.getIdService(), service);
-            }
-        }
-        Iterator<Map.Entry<Long, Services>> entries = listServices.entrySet().iterator();
-        while (entries.hasNext()) {
-            Map.Entry<Long, Services> entry = entries.next();
-            jsonServices.put(entry.getKey(), serializableService(entry.getValue()));
+        for (Map.Entry<Long, Object> entry : new TreeMap<>(serviceDao.listAll()).entrySet()) {
+            jsonServices.put(entry.getKey(), serializableService((Services) entry.getValue()));
             jsonObject.put("services", jsonServices);
         }
         return jsonObject;

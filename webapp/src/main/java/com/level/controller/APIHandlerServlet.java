@@ -39,46 +39,46 @@ public class APIHandlerServlet extends HttpServlet {
         Map<String, APIRequestHandler> map = new HashMap<>();
 
         map.put("userAuth", UserAuthServlet.getInstance());
-        map.put("userReg", UserRegistrationServlet.getInstance());
-        map.put("userInfo", UserInfoServlet.getInstance());
-        map.put("userUpdatePass", UserUpdatePassServlet.getInstance());
-        map.put("userUpdateInfo", UserUpdateInfoServlet.getInstance());
         map.put("userDelete", UserDeleteServlet.getInstance());
-        map.put("deletingAnUserByAnAdmin", UserAdminRemovalServlet.getInstance());
+        map.put("userInfo", UserInfoServlet.getInstance());
+        map.put("userReg", UserRegistrationServlet.getInstance());
+        map.put("userRemovalByAdmin", UserRemovalByAdminServlet.getInstance());
+        map.put("userUpdateInfo", UserUpdateInfoServlet.getInstance());
+        map.put("userUpdatePass", UserUpdatePassServlet.getInstance());
         map.put("usersList", UsersListServlet.getInstance());
 
         map.put("adminAuth", AdminAuthServlet.getInstance());
+        map.put("adminDelete", AdminDeleteServlet.getInstance());
         map.put("adminReg", AdminRegistrationServlet.getInstance());
         map.put("adminUpdate", AdminUpdateServlet.getInstance());
-        map.put("adminDelete", AdminDeleteServlet.getInstance());
         map.put("adminsList", AdminsListServlet.getInstance());
 
         map.put("commentsAdd", CommentsAddServlet.getInstance());
-        map.put("commentsUpdate", CommentsUpdateServlet.getInstance());
         map.put("commentsDelete", CommentsDeleteServlet.getInstance());
         map.put("commentsForUser", CommentsForUserServlet.getInstance());
-        map.put("deletingAnCommentByAnAdmin", CommentsAdminRemovalServlet.getInstance());
         map.put("commentsListAll", CommentsListServlet.getInstance());
         map.put("commentsListForAdmin", CommentsListServlet.getInstance());
+        map.put("commentsRemovalByAdmin", CommentsAdminRemovalServlet.getInstance());
+        map.put("commentsUpdate", CommentsUpdateServlet.getInstance());
 
         map.put("messagesAdd", MessagesAddServlet.getInstance());
-        map.put("messagesUpdate", MessagesUpdateServlet.getInstance());
         map.put("messagesDelete", MessagesDeleteServlet.getInstance());
-        map.put("messagesList", MessagesListServlet.getInstance());
+        map.put("messagesListAll", MessagesListServlet.getInstance());
         map.put("messagesListForAdmin", MessagesListServlet.getInstance());
+        map.put("messagesUpdate", MessagesUpdateServlet.getInstance());
 
         map.put("ordersAdd", OrdersAddServlet.getInstance());
-        map.put("ordersUpdate", OrdersUpdateServlet.getInstance());
         map.put("ordersDelete", OrdersDeleteServlet.getInstance());
         map.put("ordersForUser", OrdersForUserServlet.getInstance());
-        map.put("deletingAnOrderByAnAdmin", OrdersAdminRemovalServlet.getInstance());
         map.put("ordersListForAdmin", OrdersListServlet.getInstance());
+        map.put("ordersUpdate", OrdersUpdateServlet.getInstance());
+        map.put("ordersRemovalByAdmin", OrdersAdminRemovalServlet.getInstance());
 
         map.put("servicesAdd", ServicesAddServlet.getInstance());
-        map.put("servicesUpdate", ServicesUpdateServlet.getInstance());
         map.put("servicesDelete", ServicesDeleteServlet.getInstance());
         map.put("servicesListAll", ServicesListServlet.getInstance());
-        map.put("servicesList", ServicesListServlet.getInstance());
+        map.put("servicesListForAdmin", ServicesListServlet.getInstance());
+        map.put("servicesUpdate", ServicesUpdateServlet.getInstance());
 
         apiRequestHandlers = Collections.unmodifiableMap(map);
     }

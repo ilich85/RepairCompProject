@@ -1,6 +1,6 @@
 package com.level.dao.interfaces;
 
-import java.util.Set;
+import java.util.Map;
 
 public interface EntityDao {
 
@@ -12,5 +12,5 @@ public interface EntityDao {
 
     Object getEntityByID(long id);
 
-    Set getAllEntities();
+    Map<Long, Object> listAll();
 }

@@ -10,15 +10,15 @@ import java.util.TreeMap;
 
 import static com.level.controller.WorkWithCookies.adminCookieArr;
 
-public class UserAdminRemovalServlet extends APIHandlerServlet.APIRequestHandler {
-    private static final UserAdminRemovalServlet instance = new UserAdminRemovalServlet();
+public class UserRemovalByAdminServlet extends APIHandlerServlet.APIRequestHandler {
+    private static final UserRemovalByAdminServlet instance = new UserRemovalByAdminServlet();
 
 
-    public static UserAdminRemovalServlet getInstance() {
+    public static UserRemovalByAdminServlet getInstance() {
         return instance;
     }
 
-    private UserAdminRemovalServlet() {
+    private UserRemovalByAdminServlet() {
     }
 
     @Override

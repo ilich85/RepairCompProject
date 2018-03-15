@@ -1,25 +1,25 @@
 package com.level.dao.impl;
 
-import com.level.hibernateFactory.HibernateSessionFactory;
 import com.level.dao.interfaces.EntityDao;
+import com.level.hibernateFactory.HibernateSessionFactory;
 import org.hibernate.Session;
 
-import java.util.Set;
+import java.util.Map;
 
 public abstract class EntityDaoImpl implements EntityDao {
     @Override
     public void add(Object object) {
-         workWithEntity(object, "add");
+        workWithEntity(object, "add");
     }
 
     @Override
     public void update(Object object) {
-         workWithEntity(object, "update");
+        workWithEntity(object, "update");
     }
 
     @Override
     public void delete(Object object) {
-         workWithEntity(object, "delete");
+        workWithEntity(object, "delete");
     }
 
     private void workWithEntity(Object object, String string) {
@@ -37,8 +37,6 @@ public abstract class EntityDaoImpl implements EntityDao {
                     break;
             }
             session.getTransaction().commit();
-        }catch (Exception e){
-
         }
     }
 
@@ -46,5 +44,5 @@ public abstract class EntityDaoImpl implements EntityDao {
     public abstract Object getEntityByID(long id);
 
     @Override
-    public abstract Set getAllEntities();
+    public abstract Map<Long, Object> listAll();
 }

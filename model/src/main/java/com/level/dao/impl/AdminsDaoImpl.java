@@ -3,11 +3,12 @@ package com.level.dao.impl;
 import com.level.dao.entity.Admin;
 import com.level.dao.interfaces.AuthDao;
 import com.level.hibernateFactory.HibernateSessionFactory;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
+import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.TreeSet;
 
 public class AdminsDaoImpl extends EntityDaoImpl implements AuthDao {
@@ -19,8 +20,6 @@ public class AdminsDaoImpl extends EntityDaoImpl implements AuthDao {
             Query query = session.createQuery("FROM Admin WHERE adminName =:paramName");
             query.setParameter("paramName", name);
             admin = (Admin) query.uniqueResult();
-        } catch (Exception e) {
-            return null;
         }
         return admin;
     }
@@ -30,20 +29,20 @@ public class AdminsDaoImpl extends EntityDaoImpl implements AuthDao {
         Admin admin;
         try (Session session = HibernateSessionFactory.getSessionFactory().openSession()) {
             admin = session.get(Admin.class, id);
-        } catch (HibernateException e) {
-            return null;
         }
         return admin;
     }
 
     @Override
-    public Set getAllEntities() {
-        Set<Admin> admins = new TreeSet<>();
+    public Map<Long, Object> listAll() {
+        Map<Long, Object> map = new TreeMap<>();
+        Set<Admin> adminSet = new TreeSet<>();
         try (Session session = HibernateSessionFactory.getSessionFactory().openSession()) {
-            admins.addAll(session.createQuery("FROM Admin").list());
-        } catch (HibernateException e) {
-            return null;
+            adminSet.addAll(session.createQuery("FROM Admin").list());
         }
-        return admins;
+        for (Admin admin : adminSet) {
+            map.put(admin.getIdAdmin(), admin);
+        }
+        return map;
     }
 }

@@ -25,8 +25,8 @@ public class ServicesAddManager {
         JSONObject jsonObject = new JSONObject();
         Factory inst = Factory.getInstance();
         String result;
-        if (inst.getAdminDao().getAuthByName(mapParam.get("admin_name")[0]) != null) {
-            inst.getServiceDao().add(new Services(mapParam.get("description")[0],
+        if (inst.getAdminsDao().getAuthByName(mapParam.get("admin_name")[0]) != null) {
+            inst.getServicesDao().add(new Services(mapParam.get("description")[0],
                     parseInt(mapParam.get("price")[0])));
             result = "complete";
         } else {

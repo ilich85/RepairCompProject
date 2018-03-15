@@ -23,13 +23,13 @@ public class CommentsDeleteManager {
     public JSONObject delete(Map<String, String[]> mapParam) {
         String result = null;
         JSONObject jsonObject = new JSONObject();
-        User currentUser = (User) Factory.getInstance().getUserDao()
+        User currentUser = (User) Factory.getInstance().getUsersDao()
                 .getAuthByName(mapParam.get("username")[0]);
-        Comments comments = (Comments) Factory.getInstance().getCommentDAO()
+        Comments comments = (Comments) Factory.getInstance().getCommentsDao()
                 .getEntityByID(parseLong(mapParam.get("id_comment")[0]));
         if (comments != null && currentUser != null) {
             if (comments.getUser().getIdUser() == currentUser.getIdUser()) {
-                Factory.getInstance().getCommentDAO().delete(comments);
+                Factory.getInstance().getCommentsDao().delete(comments);
                 result = "complete";
             } else {
                 result = "wrong";

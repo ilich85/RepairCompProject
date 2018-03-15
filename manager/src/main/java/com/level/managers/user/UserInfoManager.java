@@ -18,7 +18,7 @@ public class UserInfoManager {
     public JSONObject getUserInfo(String username) {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("user_info", serializableUser((User) Factory.getInstance()
-                .getUserDao().getAuthByName(username)));
+                .getUsersDao().getAuthByName(username)));
         return jsonObject;
     }
 

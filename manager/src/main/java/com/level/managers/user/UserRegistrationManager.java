@@ -8,8 +8,14 @@ import org.json.simple.JSONObject;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 public class UserRegistrationManager {
+
+    private static final Set<User> USER_SET = new HashSet<>();
+    private static final Set<String> USER_NAME = new HashSet<>();
+    private static final Set<String> USER_EMAIL = new HashSet<>();
+
     private UserRegistrationManager() {
     }
 
@@ -22,19 +28,15 @@ public class UserRegistrationManager {
         return instance;
     }
 
-    private static final Set<User> USER_SET = new HashSet<>();
-    private static final Set<String> USER_NAME = new HashSet<>();
-    private static final Set<String> USER_EMAIL = new HashSet<>();
-
 
     public JSONObject registration(Map<String, String[]> paramMap) {
         JSONObject jsonObject = new JSONObject();
-        AuthDao userDao = Factory.getInstance().getUserDao();
-        String result;
+        AuthDao userDao = Factory.getInstance().getUsersDao();
         String username = paramMap.get("username")[0].toLowerCase();
         String email = paramMap.get("email")[0];
-        for (Object o : userDao.getAllEntities()) {
-            USER_SET.add((User) o);
+        String result;
+        for (Map.Entry<Long, Object> entry : new TreeMap<>(userDao.listAll()).entrySet()) {
+            USER_SET.add((User) entry.getValue());
         }
         for (User user : USER_SET) {
             USER_NAME.add(user.getUsername());

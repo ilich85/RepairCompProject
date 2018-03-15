@@ -1,11 +1,11 @@
 var doc = document;
 
-function servicesListAll() {
+function servicesListForAdmin() {
     $.ajax({
         type: "GET",
         url: "/RepairComp",
         dataType: "json",
-        data: {requestType: "servicesListAll"},
+        data: {requestType: "servicesListForAdmin"},
         success: function (data) {
             var servicesList = data.services;
             var allServices = doc.getElementById("services_for_admin");

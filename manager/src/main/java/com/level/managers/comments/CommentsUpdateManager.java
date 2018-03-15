@@ -26,15 +26,15 @@ public class CommentsUpdateManager {
         JSONObject jsonObject = new JSONObject();
         Factory inst = Factory.getInstance();
         String result;
-        User currentUser = (User) inst.getUserDao()
+        User currentUser = (User) inst.getUsersDao()
                 .getAuthByName(mapParam.get("username")[0]);
-        Comments comments = (Comments) inst.getCommentDAO()
+        Comments comments = (Comments) inst.getCommentsDao()
                 .getEntityByID(parseLong(mapParam.get("id_comment")[0]));
             comments.setText(mapParam.get("new_text")[0]);
             comments.setDate(new SimpleDateFormat().format(new Date()));
         if (currentUser != null) {
             if (comments.getUser().getIdUser() == currentUser.getIdUser()) {
-                inst.getCommentDAO().update(comments);
+                inst.getCommentsDao().update(comments);
                 result = "complete";
             } else {
                 result = "wrong";

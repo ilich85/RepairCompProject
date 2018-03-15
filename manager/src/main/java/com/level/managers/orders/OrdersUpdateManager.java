@@ -26,14 +26,14 @@ public class OrdersUpdateManager {
         JSONObject jsonObject = new JSONObject();
         Factory inst = Factory.getInstance();
         String result;
-        User currentUser = (User) inst.getUserDao()
+        User currentUser = (User) inst.getUsersDao()
                 .getAuthByName(mapParam.get("username")[0]);
-        Orders order = (Orders) inst.getOrderDao()
+        Orders order = (Orders) inst.getOrdersDao()
                 .getEntityByID(parseLong(mapParam.get("id_order")[0]));
         order.setText(mapParam.get("new_text")[0]);
         if (currentUser != null) {
             if (order.getUser().getIdUser() == currentUser.getIdUser()) {
-                inst.getOrderDao().update(order);
+                inst.getOrdersDao().update(order);
                 result = "complete";
             } else {
                 result = "wrong";

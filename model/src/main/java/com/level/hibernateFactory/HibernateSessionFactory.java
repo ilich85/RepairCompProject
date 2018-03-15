@@ -1,5 +1,6 @@
 package com.level.hibernateFactory;
 
+import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -10,7 +11,7 @@ public class HibernateSessionFactory {
     static {
         try {
             sessionFactory = new Configuration().configure().buildSessionFactory();
-        } catch (Exception e) {
+        } catch (HibernateException e) {
             e.printStackTrace();
         }
     }

@@ -22,7 +22,7 @@ public class AdminAuthManager {
     public JSONObject auth(Map<String, String[]> paramMap) {
         JSONObject jsonObject = new JSONObject();
         String result;
-        Admin currentAdmin = (Admin) Factory.getInstance().getAdminDao()
+        Admin currentAdmin = (Admin) Factory.getInstance().getAdminsDao()
                 .getAuthByName(paramMap.get("admin_name")[0]);
         if (currentAdmin != null) {
             String currPassword = currentAdmin.getPassword();

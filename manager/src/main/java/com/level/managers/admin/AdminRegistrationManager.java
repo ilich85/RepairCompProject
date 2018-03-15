@@ -23,7 +23,7 @@ public class AdminRegistrationManager {
     public JSONObject registration(Map<String, String[]> paramMap) {
         String result;
         JSONObject jsonObject = new JSONObject();
-        AuthDao adminDao = Factory.getInstance().getAdminDao();
+        AuthDao adminDao = Factory.getInstance().getAdminsDao();
         Admin currentAdmin = (Admin) adminDao.getAuthByName(paramMap.get("current_admin")[0]);
         if (currentAdmin != null) {
             if (currentAdmin.getIdAdmin() == 1) {

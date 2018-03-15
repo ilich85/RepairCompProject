@@ -8,6 +8,7 @@ import org.json.simple.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 
 public class OrdersListManager {
@@ -24,25 +25,14 @@ public class OrdersListManager {
         Factory inst = Factory.getInstance();
         JSONObject jsonObject = new JSONObject();
         JSONObject jsonOrders = new JSONObject();
-        Map<Long, Orders> listOrders = new HashMap<>();
-        Admin currentAdmin = (Admin) inst.getAdminDao().getAuthByName(adminName);
-        Set<Orders> ordersSet;
-        if (currentAdmin != null) {
-            ordersSet = inst.getOrderDao().getAllEntities();
+        if (inst.getAdminsDao().getAuthByName(adminName) != null) {
+            for (Map.Entry<Long, Object> entry : new TreeMap<>(inst.getOrdersDao()
+                    .listAll()).entrySet()) {
+                jsonOrders.put(entry.getKey(), serializableOrder((Orders) entry.getValue()));
+                jsonObject.put("orders", jsonOrders);
+            }
         } else {
             return null;
-        }
-        if (ordersSet != null) {
-            for (Orders orders : ordersSet) {
-                Orders order = (Orders) inst.getOrderDao().getEntityByID(orders.getIdOrder());
-                listOrders.put(order.getIdOrder(), order);
-            }
-        }
-
-        for (Map.Entry<Long, Orders> entry : listOrders.entrySet()) {
-            jsonOrders.put(entry.getKey(), serializableOrder(entry.getValue()));
-            jsonObject.put("orders", jsonOrders);
-
         }
         return jsonObject;
     }

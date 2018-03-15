@@ -1,9 +1,9 @@
-function servicesList() {
+function servicesListAll() {
     $.ajax({
         type: "GET",
         url: "/RepairComp",
         dataType: "json",
-        data: {requestType: "servicesList"},
+        data: {requestType: "servicesListAll"},
         success: function (data) {
             var servicesList = data.services;
             var allServices = document.getElementById("all_services");

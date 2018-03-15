@@ -21,7 +21,7 @@ public class AdminUpdateManager {
     }
 
     public JSONObject update(Map<String, String[]> mapParam) {
-        AuthDao adminDao = Factory.getInstance().getAdminDao();
+        AuthDao adminDao = Factory.getInstance().getAdminsDao();
         JSONObject jsonObject = new JSONObject();
         String result;
         Admin currentAdmin = (Admin) adminDao

@@ -26,10 +26,10 @@ public class MessagesAddManager {
     public JSONObject add(Map<String, String[]> mapParam) {
         JSONObject jsonObject = new JSONObject();
         String result;
-        Admin currAdmin = (Admin) Factory.getInstance().getAdminDao()
+        Admin currAdmin = (Admin) Factory.getInstance().getAdminsDao()
                 .getAuthByName(mapParam.get("admin_name")[0]);
         if (currAdmin != null) {
-            Factory.getInstance().getMessagesDAO().add(new Messages(new SimpleDateFormat()
+            Factory.getInstance().getMessagesDao().add(new Messages(new SimpleDateFormat()
                     .format(new Date()), mapParam.get("message_text")[0]));
             result = "complete";
         } else {

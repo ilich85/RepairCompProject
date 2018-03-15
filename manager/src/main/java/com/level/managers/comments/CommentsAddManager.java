@@ -27,10 +27,10 @@ public class CommentsAddManager {
         JSONObject jsonObject = new JSONObject();
         Factory inst = Factory.getInstance();
         String result;
-        User currentUser = (User) inst.getUserDao()
+        User currentUser = (User) inst.getUsersDao()
                 .getAuthByName(mapParam.get("username")[0]);
         if (currentUser != null) {
-            inst.getCommentDAO().add(new Comments(new SimpleDateFormat()
+            inst.getCommentsDao().add(new Comments(new SimpleDateFormat()
                     .format(new Date()), mapParam.get("comment_text")[0], currentUser));
             result = "complete";
         } else {

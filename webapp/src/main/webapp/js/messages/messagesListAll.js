@@ -1,9 +1,9 @@
-function messagesList() {
+function messagesListAll() {
     $.ajax({
         type: "GET",
         url: "/RepairComp",
         dataType: "json",
-        data: {requestType: "messagesList"},
+        data: {requestType: "messagesListAll"},
         success: function (data) {
             var messagesList = data.messages;
             var allMessages = document.getElementById("all_messages");

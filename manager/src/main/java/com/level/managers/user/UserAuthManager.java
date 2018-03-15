@@ -22,7 +22,7 @@ public class UserAuthManager {
     public  JSONObject auth(Map<String, String[]> paramMap) {
         JSONObject jsonObject = new JSONObject();
         String result;
-        User user = (User) Factory.getInstance().getUserDao()
+        User user = (User) Factory.getInstance().getUsersDao()
                 .getAuthByName(paramMap.get("username")[0]);
         if (user != null) {
             String currPassword = user.getPassword();

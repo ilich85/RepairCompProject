@@ -8,6 +8,7 @@ import org.json.simple.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 
 public class CommentsForUserManager {
@@ -22,24 +23,20 @@ public class CommentsForUserManager {
 
     public JSONObject usersComments(String username) {
         Factory inst = Factory.getInstance();
-        User currUser = (User) inst.getUserDao().getAuthByName(username);
-        Map<Long, Comments> userComments = new HashMap<>();
-        Set<Comments> commentsSet = inst.getCommentDAO().getAllEntities();
+        User currUser = (User) inst.getUsersDao().getAuthByName(username);
         JSONObject jsonObject = new JSONObject();
         JSONObject jsonComments = new JSONObject();
-        if (commentsSet != null) {
-            for (Comments comments : commentsSet) {
-                Comments comment = (Comments) inst.getCommentDAO().getEntityByID(comments.getIdComment());
-                if (currUser != null && comment.getUser().getUsername().equals(currUser.getUsername())) {
-                    userComments.put(comment.getIdComment(), comment);
+        if (inst.getUsersDao().getAuthByName(username) != null) {
+            for (Map.Entry<Long, Object> entry : new TreeMap<>(inst.getCommentsDao()
+                    .listAll()).entrySet()) {
+                Comments comments = (Comments) entry.getValue();
+                if (comments.getUser().equals(currUser)) {
+                    jsonComments.put(entry.getKey(), serializableComment(comments));
+                    jsonObject.put("users_comments", jsonComments);
                 }
             }
-        }
-
-        for (Map.Entry<Long, Comments> entry : userComments.entrySet()) {
-            jsonComments.put(entry.getKey(), serializableComment(entry.getValue()));
-            jsonObject.put("users_comments", jsonComments);
-
+        } else {
+            return null;
         }
         return jsonObject;
     }

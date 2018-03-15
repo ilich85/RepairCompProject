@@ -64,11 +64,6 @@ public class Comments implements Comparable {
     }
 
     @Override
-    public String toString() {
-        return user.getUsername() + " on " + getDate() + " write " + text;
-    }
-
-    @Override
     public int compareTo(Object o) {
         Comments comments = (Comments) o;
         return Long.compare(this.getIdComment(), comments.getIdComment());

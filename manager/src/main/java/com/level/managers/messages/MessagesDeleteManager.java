@@ -22,8 +22,8 @@ public class MessagesDeleteManager {
         JSONObject jsonObject = new JSONObject();
         Factory inst = Factory.getInstance();
         String result;
-        if (inst.getAdminDao().getAuthByName(mapParam.get("admin_name")[0]) != null) {
-            inst.getMessagesDAO().delete(inst.getMessagesDAO()
+        if (inst.getAdminsDao().getAuthByName(mapParam.get("admin_name")[0]) != null) {
+            inst.getMessagesDao().delete(inst.getMessagesDao()
                     .getEntityByID(parseLong(mapParam.get("id_message")[0])));
             result = "complete";
         } else {

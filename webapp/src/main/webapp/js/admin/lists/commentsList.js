@@ -15,19 +15,19 @@ function commentsListForAdmin() {
                     "<div class='comments-date'>" + commentsList[comment].date + "</div>" +
                     "<div  class='comments-user'>" + commentsList[comment].user + "</div>" +
                     "<input type='button' class='delete-button' value='Удалить отзыв'" +
-                    "onclick='deletingAnCommentByAnAdmin(" + commentsList[comment].id + ")'/>";
+                    "onclick='commentsRemovalByAdmin(" + commentsList[comment].id + ")'/>";
                 listComments.parentNode.appendChild(div);
             }
         }
     });
 }
-function deletingAnCommentByAnAdmin(id) {
+function commentsRemovalByAdmin(id) {
     if (confirm("Вы точно хотите удалить данный отзыв?") === true) {
         $.ajax({
             type: "POST",
             url: "/RepairComp",
             dataType: "json",
-            data: {requestType: "deletingAnCommentByAnAdmin", comment_id: id},
+            data: {requestType: "commentsRemovalByAdmin", comment_id: id},
             success: function (data) {
                 switch (data.result) {
                     case "complete":

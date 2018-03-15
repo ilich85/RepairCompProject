@@ -16,7 +16,7 @@ function ordersListForAdmin() {
                     "<div  class='orders-user'>" + ordersList[order].user + "</div>" +
                     "<div  class='orders-phone'>" + ordersList[order].phone + "</div>" +
                     "<input type='button' class='delete-button' value='Удалить заявку' " +
-                    "onclick='deletingAnOrderByAnAdmin(" + ordersList[order].id + ")'" +
+                    "onclick='ordersRemovalByAdmin(" + ordersList[order].id + ")'" +
                     "</div>";
                 allOrders.parentNode.appendChild(div);
             }
@@ -24,13 +24,13 @@ function ordersListForAdmin() {
     });
 }
 
-function deletingAnOrderByAnAdmin(id) {
+function ordersRemovalByAdmin(id) {
     if (confirm("Вы точно хотите удалить данную заявку?") === true) {
         $.ajax({
             type: "POST",
             url: "/RepairComp",
             dataType: "json",
-            data: {requestType: "deletingAnOrderByAnAdmin", order_id: id},
+            data: {requestType: "ordersRemovalByAdmin", order_id: id},
             success: function (data) {
                 switch (data.result) {
                     case "complete":
