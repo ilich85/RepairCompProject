@@ -5,10 +5,8 @@ import com.level.managers.messages.MessagesDeleteManager;
 import org.json.simple.JSONStreamAware;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Map;
-import java.util.TreeMap;
 
-import static com.level.controller.WorkWithCookies.adminCookieArr;
+import static com.level.controller.WorkWithCookies.adminCookie;
 
 public class MessagesDeleteServlet extends APIHandlerServlet.APIRequestHandler {
     private static final MessagesDeleteServlet instance = new MessagesDeleteServlet();
@@ -23,8 +21,7 @@ public class MessagesDeleteServlet extends APIHandlerServlet.APIRequestHandler {
 
     @Override
     protected JSONStreamAware processRequest(HttpServletRequest request) {
-        Map<String, String[]> map = new TreeMap<>(request.getParameterMap());
-        map.put("admin_name", adminCookieArr(request.getCookies()));
-        return MessagesDeleteManager.getInstance().delete(map);
+        return MessagesDeleteManager.getInstance().delete(
+                request.getParameterMap(), adminCookie(request.getCookies()));
     }
 }

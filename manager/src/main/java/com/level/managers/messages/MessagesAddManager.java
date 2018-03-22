@@ -23,11 +23,11 @@ public class MessagesAddManager {
         return instance;
     }
 
-    public JSONObject add(Map<String, String[]> mapParam) {
+    public JSONObject add(Map<String, String[]> mapParam, String adminName) {
         JSONObject jsonObject = new JSONObject();
         String result;
         Admin currAdmin = (Admin) Factory.getInstance().getAdminsDao()
-                .getAuthByName(mapParam.get("admin_name")[0]);
+                .getAuthByName(adminName);
         if (currAdmin != null) {
             Factory.getInstance().getMessagesDao().add(new Messages(new SimpleDateFormat()
                     .format(new Date()), mapParam.get("message_text")[0]));

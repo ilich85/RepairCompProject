@@ -20,11 +20,11 @@ public class AdminRegistrationManager {
         return instance;
     }
 
-    public JSONObject registration(Map<String, String[]> paramMap) {
+    public JSONObject registration(Map<String, String[]> paramMap, String adminName) {
         String result;
         JSONObject jsonObject = new JSONObject();
         AuthDao adminDao = Factory.getInstance().getAdminsDao();
-        Admin currentAdmin = (Admin) adminDao.getAuthByName(paramMap.get("current_admin")[0]);
+        Admin currentAdmin = (Admin) adminDao.getAuthByName(adminName);
         if (currentAdmin != null) {
             if (currentAdmin.getIdAdmin() == 1) {
                 adminDao.add(new Admin((paramMap.get("new_admin_name")[0]),

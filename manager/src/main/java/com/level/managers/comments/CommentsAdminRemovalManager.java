@@ -15,11 +15,11 @@ public class CommentsAdminRemovalManager {
         return instance;
     }
 
-    public JSONObject delete(Map<String, String[]> mapParam) {
+    public JSONObject delete(Map<String, String[]> mapParam, String admin) {
         JSONObject jsonObject = new JSONObject();
         Factory inst = Factory.getInstance();
         String result;
-        if (inst.getAdminsDao().getAuthByName(mapParam.get("admin_name")[0]) != null) {
+        if (inst.getAdminsDao().getAuthByName(admin) != null) {
             inst.getCommentsDao().delete(inst.getCommentsDao()
                     .getEntityByID(Long.parseLong(mapParam.get("comment_id")[0])));
             result = "complete";

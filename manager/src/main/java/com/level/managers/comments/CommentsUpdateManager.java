@@ -22,16 +22,15 @@ public class CommentsUpdateManager {
         return instance;
     }
 
-    public JSONObject update(Map<String, String[]> mapParam) {
+    public JSONObject update(Map<String, String[]> mapParam, String username) {
         JSONObject jsonObject = new JSONObject();
         Factory inst = Factory.getInstance();
         String result;
-        User currentUser = (User) inst.getUsersDao()
-                .getAuthByName(mapParam.get("username")[0]);
+        User currentUser = (User) inst.getUsersDao().getAuthByName(username);
         Comments comments = (Comments) inst.getCommentsDao()
                 .getEntityByID(parseLong(mapParam.get("id_comment")[0]));
-            comments.setText(mapParam.get("new_text")[0]);
-            comments.setDate(new SimpleDateFormat().format(new Date()));
+        comments.setText(mapParam.get("new_text")[0]);
+        comments.setDate(new SimpleDateFormat().format(new Date()));
         if (currentUser != null) {
             if (comments.getUser().getIdUser() == currentUser.getIdUser()) {
                 inst.getCommentsDao().update(comments);

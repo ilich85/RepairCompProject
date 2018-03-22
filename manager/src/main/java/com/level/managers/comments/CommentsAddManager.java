@@ -23,12 +23,11 @@ public class CommentsAddManager {
         return instance;
     }
 
-    public JSONObject add(Map<String, String[]> mapParam) {
+    public JSONObject add(Map<String, String[]> mapParam, String username) {
         JSONObject jsonObject = new JSONObject();
         Factory inst = Factory.getInstance();
         String result;
-        User currentUser = (User) inst.getUsersDao()
-                .getAuthByName(mapParam.get("username")[0]);
+        User currentUser = (User) inst.getUsersDao().getAuthByName(username);
         if (currentUser != null) {
             inst.getCommentsDao().add(new Comments(new SimpleDateFormat()
                     .format(new Date()), mapParam.get("comment_text")[0], currentUser));

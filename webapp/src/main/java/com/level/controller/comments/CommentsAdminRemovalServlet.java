@@ -5,10 +5,8 @@ import com.level.managers.comments.CommentsAdminRemovalManager;
 import org.json.simple.JSONStreamAware;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Map;
-import java.util.TreeMap;
 
-import static com.level.controller.WorkWithCookies.adminCookieArr;
+import static com.level.controller.WorkWithCookies.adminCookie;
 
 public class CommentsAdminRemovalServlet extends APIHandlerServlet.APIRequestHandler {
     private static final CommentsAdminRemovalServlet instance = new CommentsAdminRemovalServlet();
@@ -23,8 +21,7 @@ public class CommentsAdminRemovalServlet extends APIHandlerServlet.APIRequestHan
 
     @Override
     protected JSONStreamAware processRequest(HttpServletRequest request) {
-        Map<String, String[]> map = new TreeMap<>(request.getParameterMap());
-        map.put("admin_name", adminCookieArr(request.getCookies()));
-        return CommentsAdminRemovalManager.getInstance().delete(map);
+        return CommentsAdminRemovalManager.getInstance().delete(
+                request.getParameterMap(), adminCookie(request.getCookies()));
     }
 }

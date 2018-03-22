@@ -5,10 +5,8 @@ import com.level.managers.orders.OrdersDeleteManager;
 import org.json.simple.JSONStreamAware;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Map;
-import java.util.TreeMap;
 
-import static com.level.controller.WorkWithCookies.userCookieArr;
+import static com.level.controller.WorkWithCookies.userCookie;
 
 public class OrdersDeleteServlet extends APIHandlerServlet.APIRequestHandler {
     private static final OrdersDeleteServlet instance = new OrdersDeleteServlet();
@@ -23,8 +21,7 @@ public class OrdersDeleteServlet extends APIHandlerServlet.APIRequestHandler {
 
     @Override
     protected JSONStreamAware processRequest(HttpServletRequest request) {
-        Map<String, String[]> map = new TreeMap<>(request.getParameterMap());
-        map.put("username", userCookieArr(request.getCookies()));
-        return OrdersDeleteManager.getInstance().delete(map);
+        return OrdersDeleteManager.getInstance().delete(
+                request.getParameterMap(), userCookie(request.getCookies()));
     }
 }

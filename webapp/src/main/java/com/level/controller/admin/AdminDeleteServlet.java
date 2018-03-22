@@ -5,10 +5,8 @@ import com.level.managers.admin.AdminDeleteManager;
 import org.json.simple.JSONStreamAware;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Map;
-import java.util.TreeMap;
 
-import static com.level.controller.WorkWithCookies.adminCookieArr;
+import static com.level.controller.WorkWithCookies.adminCookie;
 
 public class AdminDeleteServlet extends APIHandlerServlet.APIRequestHandler {
     private static final AdminDeleteServlet instance = new AdminDeleteServlet();
@@ -23,8 +21,7 @@ public class AdminDeleteServlet extends APIHandlerServlet.APIRequestHandler {
 
     @Override
     protected JSONStreamAware processRequest(HttpServletRequest request) {
-        Map<String, String[]> paramMap = new TreeMap<>(request.getParameterMap());
-        paramMap.put("admin_name", adminCookieArr(request.getCookies()));
-        return AdminDeleteManager.getInstance().delete(paramMap);
+        return AdminDeleteManager.getInstance().delete(
+                request.getParameterMap(), adminCookie(request.getCookies()));
     }
 }

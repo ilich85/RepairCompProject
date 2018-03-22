@@ -5,10 +5,8 @@ import com.level.managers.admin.AdminRegistrationManager;
 import org.json.simple.JSONStreamAware;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Map;
-import java.util.TreeMap;
 
-import static com.level.controller.WorkWithCookies.adminCookieArr;
+import static com.level.controller.WorkWithCookies.adminCookie;
 
 
 public class AdminRegistrationServlet extends APIHandlerServlet.APIRequestHandler {
@@ -25,8 +23,7 @@ public class AdminRegistrationServlet extends APIHandlerServlet.APIRequestHandle
 
     @Override
     protected JSONStreamAware processRequest(HttpServletRequest request) {
-        Map<String, String[]> map = new TreeMap<>(request.getParameterMap());
-        map.put("current_admin", adminCookieArr(request.getCookies()));
-        return AdminRegistrationManager.getInstance().registration(map);
+        return AdminRegistrationManager.getInstance().registration(
+                request.getParameterMap(), adminCookie(request.getCookies()));
     }
 }

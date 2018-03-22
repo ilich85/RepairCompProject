@@ -22,9 +22,9 @@ public class AdminDeleteManager {
         return instance;
     }
 
-    public JSONObject delete(Map<String, String[]> paramMap) {
+    public JSONObject delete(Map<String, String[]> paramMap, String adminName) {
         AuthDao adminDao = Factory.getInstance().getAdminsDao();
-        Admin currentAdmin = (Admin) adminDao.getAuthByName(paramMap.get("admin_name")[0]);
+        Admin currentAdmin = (Admin) adminDao.getAuthByName(adminName);
         Admin adminOnRemoval = (Admin) adminDao.getEntityByID(parseLong(paramMap.get("id")[0]));
         JSONObject jsonObject = new JSONObject();
         String result;

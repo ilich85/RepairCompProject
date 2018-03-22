@@ -5,10 +5,8 @@ import com.level.managers.admin.AdminUpdateManager;
 import org.json.simple.JSONStreamAware;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Map;
-import java.util.TreeMap;
 
-import static com.level.controller.WorkWithCookies.adminCookieArr;
+import static com.level.controller.WorkWithCookies.adminCookie;
 
 
 public class AdminUpdateServlet extends APIHandlerServlet.APIRequestHandler {
@@ -23,8 +21,7 @@ public class AdminUpdateServlet extends APIHandlerServlet.APIRequestHandler {
 
     @Override
     protected JSONStreamAware processRequest(HttpServletRequest request) {
-        Map<String, String[]> map = new TreeMap<>(request.getParameterMap());
-        map.put("current_admin", adminCookieArr(request.getCookies()));
-        return AdminUpdateManager.getInstance().update(map);
+        return AdminUpdateManager.getInstance().update(
+                request.getParameterMap(), adminCookie(request.getCookies()));
     }
 }

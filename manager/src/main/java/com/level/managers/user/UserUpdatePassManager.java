@@ -20,11 +20,11 @@ public class UserUpdatePassManager {
         return instance;
     }
 
-    public JSONObject update(Map<String, String[]> mapParam) {
+    public JSONObject update(Map<String, String[]> mapParam, String username) {
         JSONObject jsonObject = new JSONObject();
         AuthDao inst = Factory.getInstance().getUsersDao();
         String result;
-        User currentUser = (User) inst.getAuthByName(mapParam.get("username")[0]);
+        User currentUser = (User) inst.getAuthByName(username);
         String newPass = mapParam.get("new_pass")[0];
         if (currentUser.getPassword().equals(mapParam.get("old_pass")[0])) {
             if (newPass.equals(mapParam.get("repeat_pass")[0])) {

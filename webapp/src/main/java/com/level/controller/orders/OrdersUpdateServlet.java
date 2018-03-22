@@ -5,10 +5,8 @@ import com.level.managers.orders.OrdersUpdateManager;
 import org.json.simple.JSONStreamAware;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Map;
-import java.util.TreeMap;
 
-import static com.level.controller.WorkWithCookies.userCookieArr;
+import static com.level.controller.WorkWithCookies.userCookie;
 
 public class OrdersUpdateServlet extends APIHandlerServlet.APIRequestHandler {
     private static final OrdersUpdateServlet instance = new OrdersUpdateServlet();
@@ -23,8 +21,7 @@ public class OrdersUpdateServlet extends APIHandlerServlet.APIRequestHandler {
 
     @Override
     protected JSONStreamAware processRequest(HttpServletRequest request) {
-        Map<String, String[]> map = new TreeMap<>(request.getParameterMap());
-        map.put("username", userCookieArr(request.getCookies()));
-        return OrdersUpdateManager.getInstance().update(map);
+        return OrdersUpdateManager.getInstance().update(
+                request.getParameterMap(), userCookie(request.getCookies()));
     }
 }

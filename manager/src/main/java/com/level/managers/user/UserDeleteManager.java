@@ -19,12 +19,12 @@ public class UserDeleteManager {
         return instance;
     }
 
-    public JSONObject delete(Map<String, String[]> paramMap) {
+    public JSONObject delete(Map<String, String[]> paramMap, String username) {
         String result;
         JSONObject jsonObject = new JSONObject();
 
         Factory inst = Factory.getInstance();
-        User currentUser = (User) inst.getUsersDao().getAuthByName(paramMap.get("username")[0]);
+        User currentUser = (User) inst.getUsersDao().getAuthByName(username);
         if (currentUser.getPassword().equals(paramMap.get("pass_del")[0])) {
             inst.getUsersDao().delete(currentUser);
             result = "complete";

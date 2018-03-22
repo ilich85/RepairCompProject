@@ -22,12 +22,11 @@ public class MessagesUpdateManager {
         return instance;
     }
 
-    public JSONObject update(Map<String, String[]> mapParam) {
+    public JSONObject update(Map<String, String[]> mapParam, String adminName) {
         JSONObject jsonObject = new JSONObject();
         Factory inst = Factory.getInstance();
         String result;
-        Admin currAdmin = (Admin) inst.getAdminsDao()
-                .getAuthByName(mapParam.get("admin_name")[0]);
+        Admin currAdmin = (Admin) inst.getAdminsDao().getAuthByName(adminName);
         Messages messages = (Messages) inst.getMessagesDao()
                 .getEntityByID(parseLong(mapParam.get("id_message")[0]));
         if (currAdmin != null) {

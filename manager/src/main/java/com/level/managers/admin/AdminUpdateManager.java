@@ -20,12 +20,11 @@ public class AdminUpdateManager {
         return instance;
     }
 
-    public JSONObject update(Map<String, String[]> mapParam) {
+    public JSONObject update(Map<String, String[]> mapParam, String adminName) {
         AuthDao adminDao = Factory.getInstance().getAdminsDao();
         JSONObject jsonObject = new JSONObject();
         String result;
-        Admin currentAdmin = (Admin) adminDao
-                .getAuthByName(mapParam.get("current_admin")[0]);
+        Admin currentAdmin = (Admin) adminDao.getAuthByName(adminName);
         if (currentAdmin != null) {
             if (currentAdmin.getIdAdmin() == 1) {
                 Admin adminForUpdate = (Admin) adminDao

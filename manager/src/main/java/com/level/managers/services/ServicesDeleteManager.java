@@ -20,11 +20,11 @@ public class ServicesDeleteManager {
         return instance;
     }
 
-    public JSONObject delete(Map<String, String[]> mapParam) {
+    public JSONObject delete(Map<String, String[]> mapParam,String adminName) {
         Factory inst = Factory.getInstance();
         JSONObject jsonObject = new JSONObject();
         String result;
-        if (inst.getAdminsDao().getAuthByName(mapParam.get("admin_name")[0]) != null) {
+        if (inst.getAdminsDao().getAuthByName(adminName) != null) {
             inst.getServicesDao().delete(inst.getServicesDao()
                     .getEntityByID(parseInt(mapParam.get("id_service")[0])));
             result = "complete";

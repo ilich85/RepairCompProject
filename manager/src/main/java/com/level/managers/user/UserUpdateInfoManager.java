@@ -19,11 +19,10 @@ public class UserUpdateInfoManager {
         return instance;
     }
 
-    public JSONObject update(Map<String, String[]> mapParam) {
+    public JSONObject update(Map<String, String[]> mapParam, String username) {
         Factory inst = Factory.getInstance();
         JSONObject jsonObject = new JSONObject();
-        User currentUser = (User) inst.getUsersDao().
-                getAuthByName(mapParam.get("username")[0]);
+        User currentUser = (User) inst.getUsersDao().getAuthByName(username);
         currentUser.setFirstName(mapParam.get("first_name")[0]);
         currentUser.setLastName(mapParam.get("last_name")[0]);
         currentUser.setPhone(mapParam.get("phone")[0]);

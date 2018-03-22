@@ -5,10 +5,8 @@ import com.level.managers.user.UserUpdateInfoManager;
 import org.json.simple.JSONStreamAware;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Map;
-import java.util.TreeMap;
 
-import static com.level.controller.WorkWithCookies.userCookieArr;
+import static com.level.controller.WorkWithCookies.userCookie;
 
 public class UserUpdateInfoServlet extends APIHandlerServlet.APIRequestHandler {
     private static final UserUpdateInfoServlet instance = new UserUpdateInfoServlet();
@@ -23,8 +21,7 @@ public class UserUpdateInfoServlet extends APIHandlerServlet.APIRequestHandler {
 
     @Override
     protected JSONStreamAware processRequest(HttpServletRequest request) {
-        Map<String, String[]> map = new TreeMap<>(request.getParameterMap());
-        map.put("username", userCookieArr(request.getCookies()));
-        return UserUpdateInfoManager.getInstance().update(map);
+        return UserUpdateInfoManager.getInstance().update(
+                request.getParameterMap(), userCookie(request.getCookies()));
     }
 }

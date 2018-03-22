@@ -20,11 +20,11 @@ public class CommentsDeleteManager {
         return instance;
     }
 
-    public JSONObject delete(Map<String, String[]> mapParam) {
+    public JSONObject delete(Map<String, String[]> mapParam, String username) {
         String result = null;
         JSONObject jsonObject = new JSONObject();
         User currentUser = (User) Factory.getInstance().getUsersDao()
-                .getAuthByName(mapParam.get("username")[0]);
+                .getAuthByName(username);
         Comments comments = (Comments) Factory.getInstance().getCommentsDao()
                 .getEntityByID(parseLong(mapParam.get("id_comment")[0]));
         if (comments != null && currentUser != null) {

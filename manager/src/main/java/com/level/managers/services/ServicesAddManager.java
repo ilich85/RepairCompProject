@@ -21,11 +21,11 @@ public class ServicesAddManager {
         return instance;
     }
 
-    public JSONObject add(Map<String, String[]> mapParam) {
+    public JSONObject add(Map<String, String[]> mapParam, String adminName) {
         JSONObject jsonObject = new JSONObject();
         Factory inst = Factory.getInstance();
         String result;
-        if (inst.getAdminsDao().getAuthByName(mapParam.get("admin_name")[0]) != null) {
+        if (inst.getAdminsDao().getAuthByName(adminName) != null) {
             inst.getServicesDao().add(new Services(mapParam.get("description")[0],
                     parseInt(mapParam.get("price")[0])));
             result = "complete";

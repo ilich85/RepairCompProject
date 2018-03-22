@@ -18,11 +18,11 @@ public class MessagesDeleteManager {
         return instance;
     }
 
-    public JSONObject delete(Map<String, String[]> mapParam) {
+    public JSONObject delete(Map<String, String[]> mapParam, String adminName) {
         JSONObject jsonObject = new JSONObject();
         Factory inst = Factory.getInstance();
         String result;
-        if (inst.getAdminsDao().getAuthByName(mapParam.get("admin_name")[0]) != null) {
+        if (inst.getAdminsDao().getAuthByName(adminName) != null) {
             inst.getMessagesDao().delete(inst.getMessagesDao()
                     .getEntityByID(parseLong(mapParam.get("id_message")[0])));
             result = "complete";

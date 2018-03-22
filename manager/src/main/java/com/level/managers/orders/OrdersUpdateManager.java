@@ -22,12 +22,11 @@ public class OrdersUpdateManager {
         return instance;
     }
 
-    public JSONObject update(Map<String, String[]> mapParam) {
+    public JSONObject update(Map<String, String[]> mapParam, String username) {
         JSONObject jsonObject = new JSONObject();
         Factory inst = Factory.getInstance();
         String result;
-        User currentUser = (User) inst.getUsersDao()
-                .getAuthByName(mapParam.get("username")[0]);
+        User currentUser = (User) inst.getUsersDao().getAuthByName(username);
         Orders order = (Orders) inst.getOrdersDao()
                 .getEntityByID(parseLong(mapParam.get("id_order")[0]));
         order.setText(mapParam.get("new_text")[0]);

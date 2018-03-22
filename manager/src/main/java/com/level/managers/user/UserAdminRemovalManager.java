@@ -19,11 +19,11 @@ public class UserAdminRemovalManager {
         return instance;
     }
 
-    public JSONObject deleteUser(Map<String, String[]> mapParam) {
+    public JSONObject delete(Map<String, String[]> mapParam, String adminName) {
         Factory inst = Factory.getInstance();
         JSONObject jsonObject = new JSONObject();
         String result;
-        Admin currAdmin = (Admin) inst.getAdminsDao().getAuthByName(mapParam.get("admin_name")[0]);
+        Admin currAdmin = (Admin) inst.getAdminsDao().getAuthByName(adminName);
         if (currAdmin.getIdAdmin() == 1) {
             inst.getUsersDao().delete(inst.getUsersDao()
                     .getEntityByID(parseLong(mapParam.get("id_user")[0])));

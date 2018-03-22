@@ -22,11 +22,11 @@ public class OrdersAddManager {
         return instance;
     }
 
-    public JSONObject add(Map<String, String[]> mapParam) {
+    public JSONObject add(Map<String, String[]> mapParam, String username) {
         JSONObject jsonObject = new JSONObject();
         String result;
         User currentUser = (User) Factory.getInstance().getUsersDao()
-                .getAuthByName(mapParam.get("username")[0]);
+                .getAuthByName(username);
         if (currentUser != null) {
             Factory.getInstance().getOrdersDao().add(new Orders(mapParam.get("order_text")[0],
                     new SimpleDateFormat().format(new Date()), currentUser));
