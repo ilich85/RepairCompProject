@@ -15,7 +15,6 @@ public final class JSON {
     public static JSONStreamAware prepare(final JSONObject json) {
         return new JSONStreamAware() {
             private final char[] jsonChars = json.toJSONString().toCharArray();
-
             public void writeJSONString(Writer out) throws IOException {
                 out.write(jsonChars);
             }
